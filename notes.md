@@ -57,7 +57,7 @@ data = {i : np.random.randn() for i in range(7)}
 
 ## Now we know about Python
 - variables (names) are always references. binding a variable is binding to a reference
-- beware mutability, yo
+- beware mutability, yo. Almost everything except for strings and tuples are mutable, by default.
 ```python
 data = [1, 2, 3]
 def append_element(some_list, element):
@@ -66,7 +66,7 @@ def append_element(some_list, element):
 append_element(data, 4)
 data
 ```
-- `"5" + 5` is a type error (thank goodness?)
+- `"5" + 5` is a type error (thank goodness)
 - isinstance(argument, type), `isinstance(4, int)`, `isinstance(4, (int, float))`, or other tuples work in the 2nd argument
 
 ## Tab autocomplete
@@ -81,4 +81,36 @@ def isiterable(obj):
     except TypeError: #not iterable
         return False
 ```
-   
+
+- can compare lists with `==`
+
+## Dealing with strings
+- `print(r"ba\na\na")` vs `print("ba\na\na")`
+- r next to a string stans for raw
+- f next to a string calls format
+
+## Date and time
+- `from datetime import datetime, date, time`
+
+
+## Tuples
+- immutable, yay!
+-
+ `tuple("banana")` and `tuple([1, 2, 3])` makes a tuple of the sequence or iterator
+- Unpacking tuples is an awful lot like array destructuring
+- `a, b, *rest = (1, 2, 3, 4, 5)`
+
+
+## Speed considerations
+.insert costs more than .append
+
+Basic form of list comprehension is `[expr for val in collection if condition]`
+```python
+strings = ["a", "as", "abba", "zappa", "affirmation"]
+result = [x.upper() for x in strings if len(x) > 2]
+other = [x for x in strings if len(x) > 2]
+```
+Dictionary comprehension
+```python
+dict_comp = {key-expr: value-expr for value in collection if condition}
+```
